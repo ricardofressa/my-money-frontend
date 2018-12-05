@@ -10,10 +10,6 @@ export function signup(values) {
     return submit(values, `${consts.OAPI_URL}/signup`)
 }
 
-export function logout() {
-    return { type: 'TOKEN_VALIDATED', payload: false }
-}
-
 function submit(values, url) {
     return dispatch => {
         axios.post(url, values)
@@ -27,6 +23,10 @@ function submit(values, url) {
                     error => toastr.error('Erro', error))
             })
     }
+}
+
+export function logout() {
+    return { type: 'TOKEN_VALIDATED', payload: false }
 }
 
 export function validateToken(token) {
